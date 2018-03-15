@@ -1,5 +1,5 @@
-hash: 70e0de44d4f38de2fbc778af00cb735be13299102d56df95ded028dc57d0716b
-updated: 2018-03-15T09:54:12.044905688-03:00
+hash: 04babab1e15a2042c0ac2f104612df3837a4ac5c0ff584860c38351619683a1d
+updated: 2018-03-15T14:56:56.028864296-03:00
 imports:
 - name: bitbucket.org/ww/goautoneg
   version: 75cd24fc2f2c2a2088577d12123ddee5f54e0675
@@ -51,7 +51,7 @@ imports:
   subpackages:
   - spew
 - name: github.com/deis/controller-sdk-go
-  version: f683073fdc163104648abfe7cd48370bf2539364
+  version: 4bfe18b5015b2c239fa58850b8de5e8ee60bbbb5
   repo: https://github.com/topfreegames/controller-sdk-go
   vcs: git
   subpackages:
@@ -136,7 +136,7 @@ imports:
 - name: github.com/gorilla/mux
   version: e444e69cbd2e2e3e0749a2f3c717cec491552bbf
 - name: github.com/goware/urlx
-  version: 8bb4a2e4339f55b15164907177e96e9faf885504
+  version: 06d8eeb3ce171b5617a3f8ef24451df26ca971ef
 - name: github.com/jmespath/go-jmespath
   version: 0b12d6b521d83fc7f755e7cfc1b1fbdd35a01a74
 - name: github.com/juju/ratelimit
@@ -179,9 +179,9 @@ imports:
 - name: github.com/prometheus/procfs
   version: 490cc6eb5fa45bf8a8b7b73c8bc82a8160e8531d
 - name: github.com/PuerkitoBio/purell
-  version: 8a290539e2e8629dbc4e6bad948158f790ec31f4
+  version: 1c4bec281e4bbc75b4f4a1bd923bdf1bd989a969
 - name: github.com/PuerkitoBio/urlesc
-  version: 5bd2802263f21d8788851d5305584c82a5c75d7e
+  version: de5bf2ad457846296e2031421a34e2568e304e35
 - name: github.com/Sirupsen/logrus
   version: 55eb11d21d2a31a3cc93838241d04800f52e823d
   subpackages:
@@ -219,16 +219,9 @@ imports:
   - jws
   - jwt
 - name: golang.org/x/text
-  version: 2910a502d2bf9e43193af9d68ca516529614eed3
+  version: d69c40b4be55797923cec7457fac7a244d91a9b6
   subpackages:
-  - cases
-  - internal/tag
-  - language
-  - runes
-  - secure/bidirule
-  - secure/precis
   - transform
-  - unicode/bidi
   - unicode/norm
   - width
 - name: google.golang.org/api
