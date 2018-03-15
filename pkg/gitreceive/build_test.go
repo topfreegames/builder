@@ -177,6 +177,56 @@ func TestGetProcFileFromServerFailure(t *testing.T) {
 	assert.True(t, err != nil, "no error received when there should have been")
 }
 
+func TestGetSidecarFileFromRepoSuccess(t *testing.T) {
+	tmpDir, err := ioutil.TempDir("", "tmpdir")
+	if err != nil {
+		t.Fatalf("error creating temp directory (%s)", err)
+	}
+	data := []byte(`cmd:
+- name: busybox
+  image: busybox:1.28
+  resources:
+    limits:
+      cpu: 10m
+      memory: 10Mi
+    requests:
+      cpu: 5m
+      memory: 5Mi`)
+	if err := ioutil.WriteFile(tmpDir+"/Sidecarfile", data, 0644); err != nil {
+		t.Fatalf("error creating %s/Sidecarfile (%s)", tmpDir, err)
+	}
+	defer func() {
+		if err := os.RemoveAll(tmpDir); err != nil {
+			t.Fatalf("failed to remove Sidecarfile from %s (%s)", tmpDir, err)
+		}
+	}()
+	sidecar, err := getSidecarFile(tmpDir)
+	actualData := api.ProcessSidecar{}
+	yaml.Unmarshal(data, &actualData)
+	assert.NoErr(t, err)
+	assert.Equal(t, sidecar, actualData, "data")
+}
+
+func TestGetSidecarFileFromRepoFailure(t *testing.T) {
+	tmpDir, err := ioutil.TempDir("", "tmpdir")
+	if err != nil {
+		t.Fatalf("error creating temp directory (%s)", err)
+	}
+	data := []byte(`cmd=
+- name: busybox
+  image: busybox:1.28`)
+	if err := ioutil.WriteFile(tmpDir+"/Sidecarfile", data, 0644); err != nil {
+		t.Fatalf("error creating %s/Sidecarfile (%s)", tmpDir, err)
+	}
+	defer func() {
+		if err := os.RemoveAll(tmpDir); err != nil {
+			t.Fatalf("failed to remove Sidecarfile from %s (%s)", tmpDir, err)
+		}
+	}()
+	_, err = getSidecarFile(tmpDir)
+	assert.True(t, err != nil, "no error received when there should have been")
+}
+
 func TestPrettyPrintJSON(t *testing.T) {
 	f := testJSONStruct{Foo: "bar"}
 	output, err := prettyPrintJSON(f)

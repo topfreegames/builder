@@ -1,5 +1,5 @@
-hash: d85b2efb6ab99d7c4d431a95b64116345596b1e371c19c2f55b2be73fff9bcbf
-updated: 2017-02-14T09:23:17.687476614-07:00
+hash: 70e0de44d4f38de2fbc778af00cb735be13299102d56df95ded028dc57d0716b
+updated: 2018-03-15T09:54:12.044905688-03:00
 imports:
 - name: bitbucket.org/ww/goautoneg
   version: 75cd24fc2f2c2a2088577d12123ddee5f54e0675
@@ -51,7 +51,9 @@ imports:
   subpackages:
   - spew
 - name: github.com/deis/controller-sdk-go
-  version: 27bab7c5535de202635877fa7600d5158b91a757
+  version: f683073fdc163104648abfe7cd48370bf2539364
+  repo: https://github.com/topfreegames/controller-sdk-go
+  vcs: git
   subpackages:
   - api
   - hooks

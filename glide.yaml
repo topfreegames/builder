@@ -42,4 +42,6 @@ import:
   repo: https://github.com/spf13/pflag
   vcs: git
 - package: github.com/deis/controller-sdk-go
-  version: 27bab7c5535de202635877fa7600d5158b91a757
+  version: feature/sidecars
+  repo: https://github.com/topfreegames/controller-sdk-go
+  vcs: git

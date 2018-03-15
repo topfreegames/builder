@@ -303,6 +303,10 @@ func build(
 		return err
 	}
 
+	sidecar, err := getSidecarFile(tmpDir)
+	if err != nil {
+		return err
+	}
 	log.Info("Build complete.")
 
 	quit := progress("...", conf.SessionIdleInterval())
@@ -310,7 +314,7 @@ func build(
 	if !usingDockerfile {
 		image = slugBuilderInfo.AbsoluteSlugObjectKey()
 	}
-	release, err := hooks.CreateBuild(client, conf.Username, conf.App(), image, gitSha.Short(), procType, usingDockerfile)
+	release, err := hooks.CreateBuild(client, conf.Username, conf.App(), image, gitSha.Short(), procType, sidecar, usingDockerfile)
 	quit <- true
 	<-quit
 	if controller.CheckAPICompat(client, err) != nil {
@@ -376,4 +380,19 @@ func getProcFile(getter storage.ObjectGetter, dirName, procfileKey string, bType
 		return nil, fmt.Errorf("procfile %s is malformed (%s)", procfileKey, err)
 	}
 	return procType, nil
+}
+
+func getSidecarFile(dirName string) (deisAPI.ProcessSidecar, error) {
+	sidecar := deisAPI.ProcessSidecar{}
+	if _, err := os.Stat(fmt.Sprintf("%s/Sidecarfile", dirName)); err == nil {
+		rawSidecarFile, err := ioutil.ReadFile(fmt.Sprintf("%s/Sidecarfile", dirName))
+		if err != nil {
+			return nil, fmt.Errorf("error in reading %s/Sidecarfile (%s)", dirName, err)
+		}
+		if err := yaml.Unmarshal(rawSidecarFile, &sidecar); err != nil {
+			return nil, fmt.Errorf("sidecarfile %s/SidecarFile is malformed (%s)", dirName, err)
+		}
+		return sidecar, nil
+	}
+	return sidecar, nil
 }
