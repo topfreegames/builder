@@ -1,3 +1,6 @@
+language: go
+go:
+- "1.10"
 sudo: required
 env:
   matrix:
@@ -7,8 +10,11 @@ env:
   - secure: NU9/HFHOgcwQcLjmymPtRD2x0ZwM49LsWA09G9MEHYFzbM2M9XUD8cBVkzFPP0wlgBeGMgYavth19ZlyGtkJUAgwLzD1t9tU6CF3tUHc1BJPDUiEWyajgPLVWfMwtb6MgaoBXKHa4PuhzGEdsONpT0XT2IczvrEg8i8bu6rK3DunlLo3yepAi67LJB72LNzAJ0JzvAoTHv9L1OLt7tkftFyhaWywHhKlYyr/AaBo3n6oewMquH9Jb1HffyRW07bAuYmYGY2tO5+UQ9kEXhJ17mGEK4j97zqbzZ9Bv2eB8N9I15Y+nh0dtRT6HWsh8Hazw9DVxfce1QByOJi0zKjrkc9q7F8awRngceiJD9KcXI/0PqA1/CcXkIas2i7KpLbcqLVtU7Vszu+tNJLACe5VahKD4tOCKLXvSJbDr8SUfvxFqlQ32TkFpsVgs/22zKGdCNPAQtD52QuigAso1zz0CaWeUm60x7YloziFLBZSb75WuGevTfrMPUl0ToIKrKWcDX6p70IbdlPJpNMbsek7bSnBn6RZtzAQfmdzkLA4j9Z21mc4VyXtnJi8CVQWvgQsivEV+lMCS3AaYLp8h476jLpIS84LUg6PLl4X1heoDWxYLwGRwFuBaEPCAHXscAG7iB1MzyoaCr0wmMy9lfpWPOeIGfU3fTpA+GrEhr/4Uz0=
 services:
 - docker
+install:
+- curl https://glide.sh/get | sh
+- make bootstrap
 script:
-- echo 'Hi :)'
+- make test
 after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD $DOCKER_REGISTRY
 - make docker-build docker-push
