@@ -1,5 +1,5 @@
-hash: 04babab1e15a2042c0ac2f104612df3837a4ac5c0ff584860c38351619683a1d
-updated: 2018-03-15T14:56:56.028864296-03:00
+hash: 7b6c7f1b3b596803ed14a179a68db49a7f69467073ae5293b3dc78935164da58
+updated: 2018-03-15T19:04:34.804957742-03:00
 imports:
 - name: bitbucket.org/ww/goautoneg
   version: 75cd24fc2f2c2a2088577d12123ddee5f54e0675
@@ -99,7 +99,7 @@ imports:
   - log
   - swagger
 - name: github.com/ghodss/yaml
-  version: 73d445a93680fa1a78ae23a5839bad48f32ba1ee
+  version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
 - name: github.com/go-ini/ini
   version: afbd495e5aaea13597b5e14fe514ddeaa4d76fc3
 - name: github.com/golang/glog

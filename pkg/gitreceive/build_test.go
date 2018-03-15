@@ -19,7 +19,7 @@ import (
 	"github.com/docker/distribution/context"
 	"github.com/docker/distribution/registry/storage/driver/factory"
 	_ "github.com/docker/distribution/registry/storage/driver/inmemory"
-	"gopkg.in/yaml.v2"
+	yaml "github.com/ghodss/yaml"
 )
 
 const (

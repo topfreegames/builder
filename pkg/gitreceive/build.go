@@ -21,7 +21,7 @@ import (
 	"github.com/deis/pkg/log"
 	"github.com/docker/distribution/context"
 	storagedriver "github.com/docker/distribution/registry/storage/driver"
-	"gopkg.in/yaml.v2"
+	yaml "github.com/ghodss/yaml"
 	"k8s.io/kubernetes/pkg/api"
 	client "k8s.io/kubernetes/pkg/client/unversioned"
 )
